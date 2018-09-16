@@ -4,7 +4,7 @@ protocol PageViewDelegate: class {
 
   func pageViewDidZoom(_ pageView: PageView)
   func remoteImageDidLoad(_ image: UIImage?, imageView: UIImageView)
-  func pageView(_ pageView: PageView, didTouchPlayButton videoURLClosure:(() -> URL?))
+  func pageView(_ pageView: PageView, didTouchPlayButton videoURLClosure: @escaping (() -> URL?))
   func pageViewDidTouch(_ pageView: PageView)
 }
 

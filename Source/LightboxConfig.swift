@@ -9,7 +9,7 @@ public class LightboxConfig {
   public static var hideStatusBar = true
 
   /// Provide a closure to handle selected video
-  public static var handleVideo: (_ from: UIViewController, _ videoURLClosure:(() -> URL?)) -> Void = { from, videoURLClosure in
+  public static var handleVideo: (_ from: UIViewController, _ videoURLClosure: @escaping (() -> URL?)) -> Void = { from, videoURLClosure in
     
     guard let videoURL = videoURLClosure() else {
       return

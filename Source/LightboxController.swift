@@ -402,7 +402,7 @@ extension LightboxController: PageViewDelegate {
     toggleControls(pageView: pageView, visible: !pageView.hasZoomed, duration: duration, delay: 0.5)
   }
 
-  func pageView(_ pageView: PageView, didTouchPlayButton videoURLClosure:(() -> URL?)) {
+  func pageView(_ pageView: PageView, didTouchPlayButton videoURLClosure: @escaping (() -> URL?)) {
     LightboxConfig.handleVideo(self, videoURLClosure)
   }
 
