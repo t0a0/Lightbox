@@ -11,16 +11,14 @@ public class LightboxConfig {
   /// Provide a closure to handle selected video
   public static var handleVideo: (_ from: UIViewController, _ videoURLClosure:(() -> URL?)) -> Void = { from, videoURLClosure in
     
-    guard let vURLclosure = videoURLClosure else {
+    guard let videoURL = videoURLClosure() else {
       return
     }
     
     let videoController = AVPlayerViewController()
     
-    let videoURL = vURLclosure()
-    
     videoController.player = AVPlayer(url: videoURL)
-
+    
     from.present(videoController, animated: true) {
       videoController.player?.play()
     }

@@ -14,24 +14,23 @@ open class LightboxImage {
   internal init(text: String = "") {
     self.text = text
   }
-
-  public init(image: UIImage, text: String = "", videoURLClosure: @escaping (() -> URL)? = nil) {
+  
+  public init(image: UIImage, text: String = "", videoURLClosure: (() -> URL?)? = nil) {
     self.image = image
     self.text = text
     self.videoURLClosure = videoURLClosure
   }
-
-  public init(imageURL: URL, text: String = "", videoURLClosure: @escaping (() -> URL)? = nil) {
+  
+  public init(imageURL: URL, text: String = "", videoURLClosure: (() -> URL?)? = nil) {
     self.imageURL = imageURL
     self.text = text
     self.videoURLClosure = videoURLClosure
   }
   
-  public init(imageClosure: @escaping () -> UIImage?, text: String = "", videoURLClosure: @escaping (() -> URL)? = nil) {
+  public init(imageClosure: @escaping () -> UIImage?, text: String = "", videoURLClosure: (() -> URL?)? = nil) {
     self.imageClosure = imageClosure
     self.text = text
     self.videoURLClosure = videoURLClosure
-    let lul = videoURLClosure!()
   }
   
   open func addImageTo(_ imageView: UIImageView, completion: ((UIImage?) -> Void)? = nil) {
