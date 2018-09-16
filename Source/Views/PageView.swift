@@ -4,7 +4,7 @@ protocol PageViewDelegate: class {
 
   func pageViewDidZoom(_ pageView: PageView)
   func remoteImageDidLoad(_ image: UIImage?, imageView: UIImageView)
-  func pageView(_ pageView: PageView, didTouchPlayButton videoURL: URL)
+  func pageView(_ pageView: PageView, didTouchPlayButton videoURLClosure:(() -> URL?))
   func pageViewDidTouch(_ pageView: PageView)
 }
 
@@ -94,9 +94,9 @@ class PageView: UIScrollView {
   }
   
   func updatePlayButton () {
-    if self.image.videoURL != nil && !subviews.contains(playButton) {
+    if self.image.videoURLClosure != nil && !subviews.contains(playButton) {
       addSubview(playButton)
-    } else if self.image.videoURL == nil && subviews.contains(playButton) {
+    } else if self.image.videoURLClosure == nil && subviews.contains(playButton) {
       playButton.removeFromSuperview()
     }
   }
@@ -198,9 +198,9 @@ class PageView: UIScrollView {
   // MARK: - Action
 
   @objc func playButtonTouched(_ button: UIButton) {
-    guard let videoURL = image.videoURL else { return }
+    guard let videoURLClosure = image.videoURLClosure else { return }
 
-    pageViewDelegate?.pageView(self, didTouchPlayButton: videoURL as URL)
+    pageViewDelegate?.pageView(self, didTouchPlayButton: videoURLClosure)
   }
 }
 
