@@ -71,7 +71,9 @@ class LightboxTransition: UIPercentDrivenInteractiveTransition {
           controller.view.alpha = 0
           controller.view.backgroundColor = UIColor.black.withAlphaComponent(0)
           }, completion: {[weak controller] _ in
-            controller?.dismissalDelegate?.lightboxControllerDidDismiss(controller)
+            if let c = controller {
+              c.dismissalDelegate?.lightboxControllerDidDismiss(c)
+            }
         })
       } else {
         cancel()
