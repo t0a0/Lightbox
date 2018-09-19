@@ -70,10 +70,7 @@ class LightboxTransition: UIPercentDrivenInteractiveTransition {
           self.scrollView?.frame.origin.y = translation.y * 3
           controller.view.alpha = 0
           controller.view.backgroundColor = UIColor.black.withAlphaComponent(0)
-          }, completion: {[weak controller] _ in
-            if let c = controller {
-              c.dismissalDelegate?.lightboxControllerDidDismiss(c)
-            }
+          }, completion: { _ in
         })
       } else {
         cancel()
